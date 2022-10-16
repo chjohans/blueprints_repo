@@ -21,11 +21,12 @@ blueprint:
     
     # Selector for fixed value temperature sensors (common for Tuya devices)
     # These sensors *have* to belong to the device class battery, you can use HA customization to override the device class for an entity
-    #use_battery_low_fixed_value:
-    #  name: Use fixed value type battery sensors
-    #  description: Use battery sensors that represent the battery level with a fixed string, e.g. 'high', 'medium', or 'low'. Enable such sensors?
-    #  default: false
-    #  boolean:
+    use_battery_low_fixed_value:
+      name: Use fixed value type battery sensors
+      description: Use battery sensors that represent the battery level with a fixed string, e.g. 'high', 'medium', or 'low'. Enable such sensors?
+      default: false
+      selector:
+        boolean:
 
     battery_low_fixed_value:
       name: Low battery value
