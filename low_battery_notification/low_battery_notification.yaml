@@ -2,7 +2,7 @@ blueprint:
   name: Low battery level detection & notification for all battery sensors
   description: Regularly test all sensors with 'battery' device-class for crossing a certain battery level threshold and if so execute an action.
   domain: automation
-  source_url: https://github.com/gmlupatelli/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml
+  source_url: https://github.com/chjohans/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml
 
 
   # Blueprint Inputs
@@ -18,6 +18,17 @@ blueprint:
           unit_of_measurement: '%'
           mode: slider
           step: 5.0
+    
+    # Selector for fixed value temperature sensors (common for Tuya devices)
+    # These sensors *have* to belong to the device class battery, you can use HA customization to override the device class for an entity
+    use_battery_low_fixed_value:
+      description: Use battery sensors that represent the battery level with a fixed string, e.g. 'high', 'medium', or 'low'. Enable such sensors?
+      boolean:
+    battery_low_fixed_value:
+      description: Enter the string value that represents a low battery level.
+      default: low
+      selector:
+        text:
 
     time:
       name: Time to test on
