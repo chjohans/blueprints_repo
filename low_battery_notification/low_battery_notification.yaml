@@ -24,7 +24,9 @@ blueprint:
     use_battery_low_fixed_value:
       name: Use fixed value type battery sensors
       description: Use battery sensors that represent the battery level with a fixed string, e.g. 'high', 'medium', or 'low'. Enable such sensors?
+      default: false
       boolean:
+
     battery_low_fixed_value:
       name: Low battery value
       description: Enter the string that represents a low battery level.
