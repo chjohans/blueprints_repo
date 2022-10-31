@@ -36,7 +36,7 @@ Notice: There is a bug in Home Assistant that causes boolean selectors not to be
 
 There are two possible workarounds:
 1. Delete and re-create the automation.
-2. Manually edit automations.yaml (remember to reload your automation by calling the service [automation.reload](https://www.home-assistant.io/docs/automation/services/)).
+2. Manually edit automations.yaml (remember to reload your automations, you can call the service [automation.reload](https://www.home-assistant.io/docs/automation/services/) to do this).
 
 
 This blueprint is based on work by [@sbyx](https://gist.github.com/sbyx) and [@gmlupatelli](https://github.com/gmlupatelli/).
