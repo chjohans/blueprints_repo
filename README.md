@@ -44,7 +44,7 @@ Just click on [import blueprint](https://my.home-assistant.io/redirect/blueprint
 
 ### Usage
 
-After installing this blueprint you will find it in [Home Assistant](https://www.home-assistant.io/) under `Settings` -> `Automations & Scenes` -> `Blueprints`. Just click on `CREATE AUTOMATION`.
+After installing this blueprint you will find it in your [Home Assistant](https://www.home-assistant.io/) installation under `Settings` -> `Automations & Scenes` -> `Blueprints`. Just click on `CREATE AUTOMATION`.
 
 ## Simple Weekly Scheduler
 
