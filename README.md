@@ -40,7 +40,7 @@ There are two possible workarounds:
 
 ### Installation
 
-https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/chjohans/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml
+Just click in [import blueprint](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/chjohans/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml) to add this blueprint to your [Home Assistant](https://www.home-assistant.io/) installation.
 
 ### Usage
 
