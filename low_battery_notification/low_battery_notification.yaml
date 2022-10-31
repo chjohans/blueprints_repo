@@ -34,51 +34,51 @@ blueprint:
         text:
 
     time:
-      name: Time to test on
-      description: Test is run at configured time
+      name: Time to run automation
+      description: Automation is being executed at the configured time
       default: '20:00:00'
       selector:
         time: {}
     # In this segment the user will selected the week days that the automation will be exectuted.
     monday_enabled:
       name: Monday
-      description: Run test on Monday
+      description: Run automation every Monday
       default: True
       selector:
         boolean:
     tuesday_enabled:
       name: Tuesday
-      description: Run test on Tuesday
+      description: Run automation every Tuesday
       default: True
       selector:
         boolean:
     wednesday_enabled:
       name: Wednesday
-      description: Run test on Wednesday
+      description: Run automation every Wednesday
       default: True
       selector:
         boolean:
     thursday_enabled:
       name: Thursday
-      description: Run test on Thursday
+      description: Run automation every Thursday
       default: True
       selector:
         boolean:
     friday_enabled:
       name: Friday
-      description: Run test on Friday
+      description: Run automation every Friday
       default: True
       selector:
         boolean:
     saturday_enabled:
       name: Saturday
-      description: Run test on Saturday
+      description: Run automation every Saturday
       default: True
       selector:
         boolean:
     sunday_enabled:
       name: Sunday
-      description: Run test on Sunday
+      description: Run automation every Sunday
       default: True
       selector:
         boolean:
