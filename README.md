@@ -39,7 +39,7 @@ There are two possible workarounds:
 2. Manually edit automations.yaml (remember to reload your automation by calling the service [automation.reload](https://www.home-assistant.io/docs/automation/services/).
 
 
-This blueprint is based on work by @gmlupatelli
+This blueprint is based on work by [@gmlupatelli](https://github.com/gmlupatelli/).
 
 ### Installation
 
