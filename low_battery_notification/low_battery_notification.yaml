@@ -1,15 +1,16 @@
 blueprint:
-  name: Low battery level detection & notification for all battery sensors
-  description: Regularly test all sensors with 'battery' device-class for crossing a certain battery level threshold and if so execute an action.
+  # Adapted from: https://github.com/gmlupatelli/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml
+  name: New Low battery level detection & notification for all battery sensors
+  description: Regularly test all sensors with 'battery' device-class for crossing a certain battery level threshold and if so execute an action. Supports devices with a fixed value (e.g. 'low', 'medium', 'high') as their battery state indicator.
   domain: automation
-  source_url: https://github.com/gmlupatelli/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml
+  source_url: https://github.com/chjohans/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml
 
 
   # Blueprint Inputs
   input:
     threshold:
       name: Battery warning level threshold
-      description: Battery sensors below threshold are assumed to be low-battery (as well as binary battery sensors with value 'on').
+      description: Battery sensors below threshold are assumed to be low-battery (as well as binary battery sensors with value on).
       default: 20
       selector:
         number:
@@ -18,12 +19,11 @@ blueprint:
           unit_of_measurement: '%'
           mode: slider
           step: 5.0
-    
-    # Selector for fixed value temperature sensors (common for Tuya devices)
-    # These sensors *have* to belong to the device class battery, you can use HA customization to override the device class for an entity
-    use_battery_low_fixed_value:
+
+    use_battery_fixed_value:
       name: Use fixed value type battery sensors
-      description: Use battery sensors that represent the battery level with a fixed string, e.g. 'high', 'medium', or 'low'.
+      description: Use battery sensors that represent the battery level with a fixed string, e.g. high, medium, low, or some other value.
+      default: False
       selector:
         boolean:
     battery_low_fixed_value:
@@ -39,46 +39,46 @@ blueprint:
       default: '10:00:00'
       selector:
         time: {}
-    # In this segment the user will selected the week days that te automation will be exectuted.
+    # In this segment the user will selected the week days that the automation will be exectuted.
     monday_enabled:
-      name: 'Monday'
-      description: 'Run test on Monday'
+      name: Monday
+      description: Run test on Monday
       default: True
       selector:
         boolean:
     tuesday_enabled:
       name: Tuesday
-      description: 'Run test on Tuesday'
+      description: Run test on Tuesday
       default: True
       selector:
         boolean:
     wednesday_enabled:
       name: Wednesday
-      description: 'Run test on Wednesday'
+      description: Run test on Wednesday
       default: True
       selector:
         boolean:
     thursday_enabled:
       name: Thursday
-      description: 'Run test on Thursday'
+      description: Run test on Thursday
       default: True
       selector:
         boolean:
     friday_enabled:
       name: Friday
-      description: 'Run test on Friday'
+      description: Run test on Friday
       default: True
       selector:
         boolean:
     saturday_enabled:
       name: Saturday
-      description: 'Run test on Saturday'
+      description: Run test on Saturday
       default: True
       selector:
         boolean:
     sunday_enabled:
       name: Sunday
-      description: 'Run test on Sunday'
+      description: Run test on Sunday
       default: True
       selector:
         boolean:
@@ -114,16 +114,24 @@ variables:
 
   exclude: !input 'exclude'
 
+  use_battery_fixed_value: !input 'use_battery_fixed_value'
+  battery_low_fixed_value: !input 'battery_low_fixed_value'
+
+
   sensors: >-
     {% set result = namespace(sensors=[]) %}
     {% for state in states.sensor | selectattr('attributes.device_class', '==', 'battery') %}
       {% if exclude.entity_id is defined %}
         {% if 0 <= state.state | int(-1) < threshold | int and not state.entity_id in exclude.entity_id %}
           {% set result.sensors = result.sensors + [state.name ~ ' (' ~ state.state ~ ' %)'] %}
+        {% elif use_battery_fixed_value and state.state == battery_low_fixed_value and not state.entity_id in exclude.entity_id %}
+          {% set result.sensors = result.sensors + [state.name ~ ' (' ~ state.state ~ ')'] %}
         {% endif %}
       {% else %}
         {% if 0 <= state.state | int(-1) < threshold | int %}
           {% set result.sensors = result.sensors + [state.name ~ ' (' ~ state.state ~ ' %)'] %}
+        {% elif use_battery_fixed_value and state.state == battery_low_fixed_value %}
+          {% set result.sensors = result.sensors + [state.name ~ ' (' ~ state.state ~ ')'] %}
         {% endif %}
       {% endif %}
     {% endfor %}
