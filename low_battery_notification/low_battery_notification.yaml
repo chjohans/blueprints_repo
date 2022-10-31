@@ -1,6 +1,6 @@
 blueprint:
   # Adapted from: https://github.com/gmlupatelli/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml
-  name: New Low battery level detection & notification for all battery sensors
+  name: Low battery level detection & notification for all battery sensors
   description: Regularly test all sensors with 'battery' device-class for crossing a certain battery level threshold and if so execute an action. Supports devices with a fixed value (e.g. 'low', 'medium', 'high') as their battery state indicator.
   domain: automation
   source_url: https://github.com/chjohans/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml
