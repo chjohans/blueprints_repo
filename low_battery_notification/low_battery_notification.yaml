@@ -36,7 +36,7 @@ blueprint:
     time:
       name: Time to test on
       description: Test is run at configured time
-      default: '10:00:00'
+      default: '20:00:00'
       selector:
         time: {}
     # In this segment the user will selected the week days that the automation will be exectuted.

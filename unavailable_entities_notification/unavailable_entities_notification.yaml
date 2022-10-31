@@ -1,57 +1,58 @@
 blueprint:
+  # Adapted from: https://github.com/gmlupatelli/blueprints_repo/blob/master/unavailable_entities_notification/unavailable_entities_notification.yaml
   name: Unavailable entity detection & notification
   description:  Regularly test all entities' status to check for unavailability.
   domain: automation
-  source_url: https://github.com/gmlupatelli/blueprints_repo/blob/master/unavailable_entities_notification/unavailable_entities_notification.yaml
+  source_url: https://github.com/chjohans/blueprints_repo/blob/master/unavailable_entities_notification/unavailable_entities_notification.yaml
 
   # Blueprint Inputs
   input:
     time:
       name: Time to test on
       description: Test is run at configured time
-      default: '10:00:00'
+      default: '20:00:00'
       selector:
         time: {}
     # In this segment the user will selected the week days that te automation will be exectuted.
     monday_enabled:
-      name: 'Monday'
-      description: 'Run test on Monday'
+      name: Monday
+      description: Run test on Monday
       default: True
       selector:
         boolean:
     tuesday_enabled:
       name: Tuesday
-      description: 'Run test on Tuesday'
+      description: Run test on Tuesday
       default: True
       selector:
         boolean:
     wednesday_enabled:
       name: Wednesday
-      description: 'Run test on Wednesday'
+      description: Run test on Wednesday
       default: True
       selector:
         boolean:
     thursday_enabled:
       name: Thursday
-      description: 'Run test on Thursday'
+      description: Run test on Thursday
       default: True
       selector:
         boolean:
     friday_enabled:
       name: Friday
-      description: 'Run test on Friday'
+      description: Run test on Friday
       default: True
       selector:
         boolean:
     saturday_enabled:
       name: Saturday
-      description: 'Run test on Saturday'
+      description: Run test on Saturday
       default: True
       selector:
         boolean:
     sunday_enabled:
       name: Sunday
-      description: 'Run test on Sunday'
+      description: Run test on Sunday
       default: True
       selector:
         boolean:
