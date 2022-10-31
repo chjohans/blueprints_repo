@@ -38,6 +38,9 @@ There are two possible workarounds:
 1. Delete and re-create the automation.
 2. Manually edit automations.yaml (remember to reload your automation by calling the service [automation.reload](https://www.home-assistant.io/docs/automation/services/).
 
+
+This blueprint is based on work by @gmlupatelli
+
 ### Installation
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/chjohans/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml)
