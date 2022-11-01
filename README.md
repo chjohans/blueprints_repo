@@ -10,7 +10,7 @@ Blueprints are used, in Home Assistant, as templates for building automation qui
 
 ### Description
 
-This is a template for creating an automation that will check all [battery class sensors](https://www.home-assistant.io/integrations/sensor/) for a low-battery condition, and then excute one or more [actions](https://www.home-assistant.io/docs/automation/action/), e.g. send a message with every sensor that has a low-battery condition to your phone.
+This is a template for creating an automation that will check all [battery class sensors](https://www.home-assistant.io/integrations/sensor/) in your [Home Assistant](https://www.home-assistant.io/) installation for a low-battery condition, and then excute one or more [actions](https://www.home-assistant.io/docs/automation/action/), e.g. send a message with every sensor that has a low-battery condition to your phone.
 
 The following types of battery sensors are supported:
 * The regular percentage-type battery sensor (e.g. sensor.low_battery with a value representing the battery status in percentages)
@@ -49,8 +49,38 @@ Just click on `IMPORT BLUEPRINT` above to add this blueprint to your [Home Assis
 
 ### Usage
 
-After installing this blueprint you will find it in your [Home Assistant](https://www.home-assistant.io/) installation under `Settings` -> `Automations & Scenes` -> `Blueprints`. Just click on `CREATE AUTOMATION` and follow the instructions in the blueprint and the description above.
+After installing this blueprint you will find it in your [Home Assistant](https://www.home-assistant.io/) installation under `Settings` -> `Automations & Scenes` -> `Blueprints`. Just click on `CREATE AUTOMATION` and follow the instructions in the blueprint and in the description above.
+
+## Unavailable Entities Notification
+
+### Description
+
+This is a template for creating an automation that will check all [entities](https://developers.home-assistant.io/docs/core/entity/) in your [Home Assistant](https://www.home-assistant.io/) installation for a `unavalaible` status, and then excute one or more [actions](https://www.home-assistant.io/docs/automation/action/), e.g. send a message with every entity that is currently unavailable to your phone.
+
+The blueprint will let you set the time of the day and days of the week when the automation should be executed.
+
+You can use `{{entities}}` in your [actions](https://www.home-assistant.io/docs/automation/action/), this will be substituted with a string that is acomma-separated list of all entities with status `unavailable`.
+
+You can also exclude one or more entities from being checked, that is usefull to exclude for instance phones, tablets, and similar devices.
+
+Notice: There is a bug in Home Assistant that causes boolean selectors not to be saved properly when an automation based on a blueprint is later being edited in the GUI, so any changes to your automation(s) based on this blueprint that involves changing the on/off selectors in the blueprint will not be saved. Their states will be saved correctly when you first create the automation, but for subsequent changes their states will not be saved/updated correctly. This bug is still present in HA version 2022.10.5, and a description of the bug can be found [here](https://github.com/home-assistant/frontend/issues/13206).
+
+There are two possible workarounds:
+1. Delete and re-create the automation.
+2. Manually edit automations.yaml (remember to reload your automations, you can call the service [automation.reload](https://www.home-assistant.io/docs/automation/services/) to do this).
+
+
+This blueprint is based on work by [@gmlupatelli](https://github.com/gmlupatelli/).
+
+### Installation
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://raw.githubusercontent.com/chjohans/blueprints_repo/master/unavailable_entities_notification/unavailable_entities_notification.yaml)
+
+Just click on `IMPORT BLUEPRINT` above to add this blueprint to your [Home Assistant](https://www.home-assistant.io/) installation.
+
+### Usage
+
+After installing this blueprint you will find it in your [Home Assistant](https://www.home-assistant.io/) installation under `Settings` -> `Automations & Scenes` -> `Blueprints`. Just click on `CREATE AUTOMATION` and follow the instructions in the blueprint and in the description above.
 
 ## Simple Weekly Scheduler
 
-## Unavailable Entities Notification
