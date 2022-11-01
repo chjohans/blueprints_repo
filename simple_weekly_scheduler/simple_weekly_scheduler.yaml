@@ -1,7 +1,7 @@
 blueprint:
   # Adapted from: https://github.com/gmlupatelli/blueprints_repo/blob/master/simple_weekly_scheduler/simple_weekly_scheduler.yaml
   name: Simple Weekly Scheduler
-  description: Simple weekly scheduler to start/turn on and stop/turn off devices (e.g. lamps or switches).
+  description: Simple weekly scheduler to start/turn on and stop/turn off devices (e.g. lamps, switches).
   domain: automation
   source_url: https://github.com/chjohans/blueprints_repo/blob/master/simple_weekly_scheduler/simple_weekly_scheduler.yaml
 
@@ -42,7 +42,7 @@ blueprint:
           unit_of_measurement : 'min'
 
     # In this segment the user will selected the actions that will be performed during the start/turn-on
-    scheduled_action_on:
+    scheduled_actions_on:
       name: Action start/turn on
       description: Select the start/turn on action(s) to run
       default: []
@@ -84,14 +84,14 @@ blueprint:
           unit_of_measurement : 'min'
  
      # In this segment the user will selected the actions that will be performed during the stop/turn-off
-    scheduled_action_off:
+    scheduled_actions_off:
       name: Action start/turn off
       description: Select the stop/turn off action(s) to run
       default: []
       selector:
         action: { }
 
-    # In this segment the user will selected the week days that te automation will be exectuted.
+    # In this segment the user will selected the week days that the automation will be exectuted.
     # Monday
     monday_enabled:
       name: Monday
@@ -243,7 +243,7 @@ action:
           id: 'trigger_default_sunrise_on'
         - condition: trigger
           id: 'trigger_default_sunset_on'
-        sequence: !input scheduled_action_on
+        sequence: !input scheduled_actions_on
       - condition: or
         conditions:
         - condition: trigger
@@ -252,7 +252,7 @@ action:
           id: 'trigger_default_sunrise_off'
         - condition: trigger
           id: 'trigger_default_sunset_off'
-        sequence: !input scheduled_action_off
+        sequence: !input scheduled_actions_off
     default: []
 
 mode: single
