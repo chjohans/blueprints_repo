@@ -10,7 +10,7 @@ Blueprints are used, in Home Assistant, as templates for building automation qui
 
 ### Description
 
-This is a template for creating an automation that will check all [battery class sensors](https://www.home-assistant.io/integrations/sensor/) in your [Home Assistant](https://www.home-assistant.io/) installation for a low-battery condition, and then excute one or more [actions](https://www.home-assistant.io/docs/automation/action/), e.g. send a message with every sensor that has a low-battery condition to your phone.
+This is a template for creating an automation that will check all [battery class sensors](https://www.home-assistant.io/integrations/sensor/) in your [Home Assistant](https://www.home-assistant.io/) installation for a low-battery condition, and then execute one or more [actions](https://www.home-assistant.io/docs/automation/action/), e.g. send a message with every sensor that has a low-battery condition to your phone.
 
 The following types of battery sensors are supported:
 * The regular percentage-type battery sensor (e.g. sensor.low_battery with a value representing the battery status in percentages)
@@ -24,13 +24,13 @@ customize:
     device_class: battery
 ```
 
-The blueprint will let you set a treshold value for when precentage-type battery sensors should be considered to be in a low-battery state. It will also let you enable support for fixed-value type battery sensors, and to customize the string that represent a low-battery state for such sensors (e.g. 'low'). There are no further options for binary-type battery sensors, such sensors will automatically be checked if they exist.
+The blueprint will let you set a threshold value for when percentage-type battery sensors should be considered to be in a low-battery state. It will also let you enable support for fixed-value type battery sensors, and to customize the string that represent a low-battery state for such sensors (e.g. 'low'). There are no further options for binary-type battery sensors, such sensors will automatically be checked if they exist.
 
 You can also set the time of the day and days of the week when the automation should be executed.
 
-You can use `{{sensors}}` in your [actions](https://www.home-assistant.io/docs/automation/action/), this will be substituted with a string that is acomma-separated list of all sensors with a low-battery status and their values.
+You can use `{{sensors}}` in your [actions](https://www.home-assistant.io/docs/automation/action/), this will be substituted with a string that is a comma-separated list of all sensors with a low-battery status and their values.
 
-You can also exclude one or more sensors from being checked, that is usefull to exclude for instance phones, tablets, and similar devices.
+You can also exclude one or more sensors from being checked, that is useful to exclude for instance phones, tablets, and similar devices.
 
 Notice: There is a bug in Home Assistant that causes boolean selectors not to be saved properly when an automation based on a blueprint is later being edited in the GUI, so any changes to your automation(s) based on this blueprint that involves changing the on/off selectors in the blueprint will not be saved. Their states will be saved correctly when you first create the automation, but for subsequent changes their states will not be saved/updated correctly. This bug is still present in HA version 2022.10.5, and a description of the bug can be found [here](https://github.com/home-assistant/frontend/issues/13206).
 
@@ -43,7 +43,7 @@ This blueprint is based on work by [@sbyx](https://gist.github.com/sbyx) and [@g
 
 ### Installation
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://raw.githubusercontent.com/chjohans/blueprints_repo/master/low_battery_notification/low_battery_notification.yaml)
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint prefilled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://raw.githubusercontent.com/chjohans/blueprints_repo/master/low_battery_notification/low_battery_notification.yaml)
 
 Just click on `IMPORT BLUEPRINT` above to add this blueprint to your [Home Assistant](https://www.home-assistant.io/) installation.
 
@@ -55,13 +55,13 @@ After installing this blueprint you will find it in your [Home Assistant](https:
 
 ### Description
 
-This is a template for creating an automation that will check all [entities](https://developers.home-assistant.io/docs/core/entity/) in your [Home Assistant](https://www.home-assistant.io/) installation for a `unavalaible` status, and then excute one or more [actions](https://www.home-assistant.io/docs/automation/action/), e.g. send a message with every entity that is currently unavailable to your phone.
+This is a template for creating an automation that will check all [entities](https://developers.home-assistant.io/docs/core/entity/) in your [Home Assistant](https://www.home-assistant.io/) installation for a `unavailable` status, and then execute one or more [actions](https://www.home-assistant.io/docs/automation/action/), e.g. send a message with every entity that is currently unavailable to your phone.
 
 The blueprint will let you set the time of the day and days of the week when the automation should be executed.
 
-You can use `{{entities}}` in your [actions](https://www.home-assistant.io/docs/automation/action/), this will be substituted with a string that is acomma-separated list of all entities with status `unavailable`.
+You can use `{{entities}}` in your [actions](https://www.home-assistant.io/docs/automation/action/), this will be substituted with a string that is a comma-separated list of all entities with status `unavailable`.
 
-You can also exclude one or more entities from being checked, that is usefull to exclude for instance phones, tablets, and similar devices.
+You can also exclude one or more entities from being checked, that is useful to exclude for instance phones, tablets, and similar devices.
 
 Notice: There is a bug in Home Assistant that causes boolean selectors not to be saved properly when an automation based on a blueprint is later being edited in the GUI, so any changes to your automation(s) based on this blueprint that involves changing the on/off selectors in the blueprint will not be saved. Their states will be saved correctly when you first create the automation, but for subsequent changes their states will not be saved/updated correctly. This bug is still present in HA version 2022.10.5, and a description of the bug can be found [here](https://github.com/home-assistant/frontend/issues/13206).
 
