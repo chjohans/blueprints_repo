@@ -1,10 +1,9 @@
 blueprint:
-  # Adapted from: https://github.com/gmlupatelli/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml
+  # Based on work by [@sbyx](https://gist.github.com/sbyx) and [@gmlupatelli](https://github.com/gmlupatelli/)
   name: Low battery level detection & notification for all battery sensors
-  description: Regularly test all sensors with 'battery' device-class for crossing a certain battery level threshold and if so execute an action. Supports devices with a fixed value (e.g. 'low', 'medium', 'high') as their battery state indicator.
+  description: Regularly test all sensors with 'battery' device-class for crossing a certain battery level threshold and if so execute one or more actions. Supports devices with a fixed value (e.g. 'low', 'medium', 'high') as their battery state indicator.
   domain: automation
   source_url: https://github.com/chjohans/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml
-
 
   input:
     threshold:
@@ -35,7 +34,7 @@ blueprint:
     time:
       name: Time to run automation
       description: Automation is being executed at the configured time
-      default: '20:00:00'
+      default: '09:00:00'
       selector:
         time: {}
 
@@ -84,7 +83,7 @@ blueprint:
 
     exclude:
       name: Excluded Sensors
-      description: Battery sensors (e.g. smartphone) to exclude from detection. Only entities are supported, areas and devices must be expanded!
+      description: Battery sensors (e.g. smartphones and tables) to exclude from detection. Only entities are supported, areas and devices must be expanded!
       default: {}
       selector:
         target:
