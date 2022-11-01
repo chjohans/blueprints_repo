@@ -6,7 +6,6 @@ blueprint:
   source_url: https://github.com/chjohans/blueprints_repo/blob/master/low_battery_notification/low_battery_notification.yaml
 
 
-  # Blueprint Inputs
   input:
     threshold:
       name: Battery warning level threshold
@@ -39,47 +38,47 @@ blueprint:
       default: '20:00:00'
       selector:
         time: {}
-    # In this segment the user will selected the week days that the automation will be exectuted.
+
     monday_enabled:
       name: Monday
       description: Run automation every Monday
-      default: True
+      default: true
       selector:
         boolean:
     tuesday_enabled:
       name: Tuesday
       description: Run automation every Tuesday
-      default: True
+      default: true
       selector:
         boolean:
     wednesday_enabled:
       name: Wednesday
       description: Run automation every Wednesday
-      default: True
+      default: true
       selector:
         boolean:
     thursday_enabled:
       name: Thursday
       description: Run automation every Thursday
-      default: True
+      default: true
       selector:
         boolean:
     friday_enabled:
       name: Friday
       description: Run automation every Friday
-      default: True
+      default: true
       selector:
         boolean:
     saturday_enabled:
       name: Saturday
       description: Run automation every Saturday
-      default: True
+      default: true
       selector:
         boolean:
     sunday_enabled:
       name: Sunday
       description: Run automation every Sunday
-      default: True
+      default: true
       selector:
         boolean:
 
@@ -147,35 +146,26 @@ variables:
     {{result.sensors|join(', ')}}
 
 
-# Triggers
 trigger:
   - platform: time
     at: !input 'time'
-
-
-# Conditions used to determine if the automation should run for the specific trigger event
 condition:
-# Check if the automation is supposed to be executed during that specific weekday
   - condition: template
     value_template: >-
-        {{ 
-          (current_day == 0 and monday_enabled) or 
-          (current_day == 1 and tuesday_enabled) or 
-          (current_day == 2 and wednesday_enabled) or
-          (current_day == 3 and thursday_enabled) or 
-          (current_day == 4 and friday_enabled) or
-          (current_day == 5 and saturday_enabled) or
-          (current_day == 6 and sunday_enabled)
-        }}
-
-
-  # Check if the sensors list is not empty
+      '{{ 
+        (current_day == 0 and monday_enabled) or 
+        (current_day == 1 and tuesday_enabled) or 
+        (current_day == 2 and wednesday_enabled) or
+        (current_day == 3 and thursday_enabled) or 
+        (current_day == 4 and friday_enabled) or
+        (current_day == 5 and saturday_enabled) or
+        (current_day == 6 and sunday_enabled)
+      }}'
   - condition: template
     value_template: >-
-        {{ sensors != '''' }}
+      '{{ sensors != '''' }}'
 
 
-# Actions
 action:
   - choose: []
     default: !input 'actions'
