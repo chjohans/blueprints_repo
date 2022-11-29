@@ -1,0 +1,26 @@
+blueprint:
+  name: Water Leak Detector
+  description: Perform one or more configurable 'actions' when a moisture sensors triggers, e.g. turns on/wet
+  domain: automation
+  source_url: https://github.com/chjohans/blueprints_repo/blob/master/water_leak_detector/water_leak_detector.yaml
+  input:
+    actions:
+      name: Actions
+      description: Notifications or similar to be run when a moisture sensor triggers.
+        {{ trigger.event.data.new_state.attributes.friendly_name }} will be the name of the
+        sensor, and can be used in your 'actions'
+      selector:
+        action: {}
+trigger:
+  - event_data: {}
+    event_type: state_changed
+    platform: event
+condition:
+  - condition: template
+    value_template: '{{ trigger.event.data.new_state.attributes.device_class == "moisture" }}'
+  - condition: template
+    value_template: '{{ trigger.event.data.new_state.state == "on" }}'
+action:
+- choose: []
+  default: !input 'actions'
+mode: single
