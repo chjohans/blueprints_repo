@@ -214,24 +214,66 @@ cards:
             conditions:
               - entity: binary_sensor.air_purifier_studio_mode_favorite
                 state: 'on'
+              - entity: binary_sensor.air_purifier_studio_pm2_5_green
+                state: 'on'
             elements:
-              - type: custom:numberbox-card
+              - type: state-label
+                prefix: 'Level '
                 entity: number.air_purifier_studio_favorite_level
-                name: false
-                icon: false
-                icon_plus: mdi:fan-plus
-                icon_minus: mdi:fan-minus
                 style:
-                  top: 70%
+                  top: 75%
                   left: 20%
-                  width: 25%
-                card_mod:
-                  style: |
-                    .cur-num{font-size:25px !important}
-                    .cur-num.upd{color:rgb(200, 30, 30)}
-                    .cur-num{color:rgb(100, 115, 130)}
-                    .cur-box ha-icon{color:rgb(192, 192, 192)}
-                    .cur-box ha-icon{transform:scale(1)}
+                  font-size: 150%
+                  font-weight: bold
+                  color: rgb(0, 165, 50)
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.air_purifier_studio_mode_favorite
+                state: 'on'
+              - entity: binary_sensor.air_purifier_studio_pm2_5_yellow
+                state: 'on'
+            elements:
+              - type: state-label
+                prefix: 'Level '
+                entity: number.air_purifier_studio_favorite_level
+                style:
+                  top: 75%
+                  left: 20%
+                  font-size: 150%
+                  font-weight: bold
+                  color: rgb(255, 220, 0)
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.air_purifier_studio_mode_favorite
+                state: 'on'
+              - entity: binary_sensor.air_purifier_studio_pm2_5_orange
+                state: 'on'
+            elements:
+              - type: state-label
+                prefix: 'Level '
+                entity: number.air_purifier_studio_favorite_level
+                style:
+                  top: 75%
+                  left: 20%
+                  font-size: 150%
+                  font-weight: bold
+                  color: rgb(255, 128, 10)
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.air_purifier_studio_mode_favorite
+                state: 'on'
+              - entity: binary_sensor.air_purifier_studio_pm2_5_red
+                state: 'on'
+            elements:
+              - type: state-label
+                prefix: 'Level '
+                entity: number.air_purifier_studio_favorite_level
+                style:
+                  top: 75%
+                  left: 20%
+                  font-size: 150%
+                  font-weight: bold
+                  color: rgb(200, 30, 30)
           - type: conditional
             conditions:
               - entity: select.air_purifier_studio_led_brightness
