@@ -65,7 +65,7 @@ You can use `{{entities}}` in your [actions](https://www.home-assistant.io/docs/
 You can also exclude one or more entities from being checked, that is useful to exclude for instance phones, tablets, and similar devices.
 
 
-Notice: There is a bug in [Home Assistant](https://www.home-assistant.io/) that causes [boolean selectors](https://www.home-assistant.io/docs/blueprint/selectors/#boolean-selector) not to be saved properly when an [automation](https://www.home-assistant.io/docs/automation/)  based on a blueprint is later being edited in the GUI, so any changes to your [automation(s)](https://www.home-assistant.io/docs/automation/) based on this blueprint that involves changing the on/off selectors in the blueprint will not be saved. Their states will be saved correctly when you first create the automation, but for subsequent changes their states will not be saved/updated correctly. This bug is still present in [Home Aassistant version 2022.10.5](https://www.home-assistant.io/blog/2022/10/05/release-202210/), and a description of the bug can be found [here](https://github.com/home-assistant/frontend/issues/13206).
+Notice: There is a bug in [Home Assistant](https://www.home-assistant.io/) that causes [boolean selectors](https://www.home-assistant.io/docs/blueprint/selectors/#boolean-selector) not to be saved properly when an [automation](https://www.home-assistant.io/docs/automation/) based on a blueprint is later being edited in the GUI, so any changes to your [automation(s)](https://www.home-assistant.io/docs/automation/) based on this blueprint that involves changing the on/off selectors in the blueprint will not be saved. Their states will be saved correctly when you first create the automation, but for subsequent changes their states will not be saved/updated correctly. This bug is still present in [Home Aassistant version 2022.10.5](https://www.home-assistant.io/blog/2022/10/05/release-202210/), and a description of the bug can be found [here](https://github.com/home-assistant/frontend/issues/13206).
 
 There are two possible workarounds:
 1. Delete and re-create the automation.
@@ -77,6 +77,31 @@ This blueprint is based on work by [@gmlupatelli](https://github.com/gmlupatelli
 ### Installation
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://raw.githubusercontent.com/chjohans/blueprints_repo/master/unavailable_entities_notification/unavailable_entities_notification.yaml)
+
+Just click on `IMPORT BLUEPRINT` above to add this blueprint to your [Home Assistant](https://www.home-assistant.io/) installation.
+
+### Usage
+
+After installing this blueprint you will find it in your [Home Assistant](https://www.home-assistant.io/) installation under `Settings` -> `Automations & Scenes` -> `Blueprints`. Just click on `CREATE AUTOMATION` and follow the instructions in the blueprint and in the description above to create your automation.
+
+## Unavailable Entities Notification
+
+### Description
+
+This is a template for creating an automation that will pause an [climate](https://www.home-assistant.io/integrations/climate/ [entity](https://developers.home-assistant.io/docs/core/entity/) in your [Home Assistant](https://www.home-assistant.io/) installation if a door or window has been opened, and then resume the previous state once the door(s)/window(s) has been closed. 
+
+The [Climate Device](https://www.home-assistant.io/integrations/climate/ has to be a single [entity](https://developers.home-assistant.io/docs/core/entity/) (eg not a [group](https://www.home-assistant.io/integrations/group/)), and the door/window [sensor](https://www.home-assistant.io/integrations/sensor/) has to be a [group](https://www.home-assistant.io/integrations/group/), even if that [group](https://www.home-assistant.io/integrations/group/) would have only one door/window [sensor](https://www.home-assistant.io/integrations/sensor/).
+
+You can specify the `{{Pause Delay}}`, eg the time a door/window needs to be open before the [climate](https://www.home-assistant.io/integrations/climate/ [entity](https://developers.home-assistant.io/docs/core/entity/) will pause. You can also specity the `{{Resume Delay}}`, eg the how soon after the previously opened door/window the [climate](https://www.home-assistant.io/integrations/climate/ [entity](https://developers.home-assistant.io/docs/core/entity/) will resume its previous state.
+
+You can also, optionally, add an [action](https://www.home-assistant.io/docs/automation/action/) to be performed then the [climate](https://www.home-assistant.io/integrations/climate/ [entity](https://developers.home-assistant.io/docs/core/entity/) is being passed, and another [action](https://www.home-assistant.io/docs/automation/action/)to be performed then the [climate](https://www.home-assistant.io/integrations/climate/ [entity](https://developers.home-assistant.io/docs/core/entity/) resumes its previous state.
+
+
+This blueprint is based on work by [@raffy-ops](https://github.com/raffy-ops).
+
+### Installation
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://raw.githubusercontent.com/chjohans/blueprints_repo/master/hvac_pause_resume/hvac_pause_resume.yaml)
 
 Just click on `IMPORT BLUEPRINT` above to add this blueprint to your [Home Assistant](https://www.home-assistant.io/) installation.
 
