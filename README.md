@@ -84,7 +84,7 @@ Just click on `IMPORT BLUEPRINT` above to add this blueprint to your [Home Assis
 
 After installing this blueprint you will find it in your [Home Assistant](https://www.home-assistant.io/) installation under `Settings` -> `Automations & Scenes` -> `Blueprints`. Just click on `CREATE AUTOMATION` and follow the instructions in the blueprint and in the description above to create your automation.
 
-## Unavailable Entities Notification
+## HVAC Pause & Resume
 
 ### Description
 
